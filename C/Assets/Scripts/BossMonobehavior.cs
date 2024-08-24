@@ -1,16 +1,23 @@
+using Fungus.TMProLinkAnimEffects;
 using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
-    MonsterController(LevelDynamicAttribute levelDynamicAttribute)
+    public void InitialData()
     {
-        this.levelDynamicAttribute = levelDynamicAttribute;
-        //魔王難易度調整點
-        this.walkSpeed = levelDynamicAttribute.WalkSpeed; // 移動速度
-        this.jumpForce = levelDynamicAttribute.JumpForce; //跳躍力道
-        this.walkTime = levelDynamicAttribute.WalkTime; //移動時間
-        this.waitTime = levelDynamicAttribute.WaitTime; //移動間隔等待時間
-        this.directionChangeInterval = levelDynamicAttribute.DirectionChangeInterval; // 方向改變間隔時間
+        this.levelDynamicAttribute = GameController.Instance.levelDynamicAttribute;
+        this.walkSpeed = GameController.Instance.levelDynamicAttribute.WalkSpeed; // 移動速度
+        this.jumpForce = GameController.Instance.levelDynamicAttribute.JumpForce; //跳躍力道
+        this.walkTime = GameController.Instance.levelDynamicAttribute.WalkTime; //移動時間
+        this.waitTime = GameController.Instance.levelDynamicAttribute.WaitTime; //移動間隔等待時間
+        this.directionChangeInterval = GameController.Instance.levelDynamicAttribute.DirectionChangeInterval; // 方向改變間隔時間
+        this.maxBossHP = GameController.Instance.levelDynamicAttribute.MaxBossHP; //最大血量
+        this.bossSize = GameController.Instance.levelDynamicAttribute.BossSize; //魔王大小
+        this.bossAttack = GameController.Instance.levelDynamicAttribute.BossAttack; //魔王攻擊力
+        this.bossResistance = GameController.Instance.levelDynamicAttribute.BossResistance; //魔王抵抗力
+
+
+        currentHP = maxBossHP;
     }
 
     private LevelDynamicAttribute levelDynamicAttribute;
@@ -24,29 +31,31 @@ public class MonsterController : MonoBehaviour
     public float directionChangeInterval; // 方向改變間隔時間
 
 
+    public float bossSize; //魔王大小
+    public float maxBossHP; //魔王血量
+    public float bossAttack; //魔王攻擊力
+    public float bossResistance; //魔王抵抗力
+
+
+
+    public float currentHP; //目前血量
     public ColliderStater ColliderStater;    
     public LayerMask groundLayer;
-
     private Rigidbody2D rb;
-    private bool isGrounded;
     private float walkTimer;
     private float waitTimer;
-    private bool isWalking;
     private float directionChangeTimer;
     private int currentDirection;
+    private bool isGrounded;
+    private bool isWalking = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        walkTimer = walkTime;
-        waitTimer = waitTime;
-        directionChangeTimer = directionChangeInterval;
+        InitialData();
 
-        isWalking = true;
         currentDirection = Random.Range(0, 2) * 2 - 1; // 初始化方向
-
-
     }
 
     void Update()
@@ -119,5 +128,11 @@ public class MonsterController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    public void TakeDamaged(int value)
+    { 
+        currentHP -= value;
+        
     }
 }

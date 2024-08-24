@@ -12,7 +12,7 @@ public class LevelDynamicAttribute : MonoBehaviour
     public float DirectionChangeInterval = 1f; // 方向改變間隔時間
 
     public float BossSize = 1f; //魔王大小
-    public float BossHP = 100f; //魔王血量
+    public float MaxBossHP = 100f; //魔王血量
     public float BossAttack = 10f; //魔王攻擊力
     public float BossResistance = 1f; //魔王抵抗力
 

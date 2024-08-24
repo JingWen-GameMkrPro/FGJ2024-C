@@ -13,13 +13,20 @@ public class GameController : MonoBehaviour
 
     GameObject girlFriendInfoInstance;
     GirlInfoController girlInfoController;
-    GameObject playerInstance;
-    GameObject bossInstance;
+    [HideInInspector]
+    public GameObject playerInstance;
+    [HideInInspector]
+    public PlayerController playerController;
+    [HideInInspector]
+    public GameObject monsterInstance;
+    [HideInInspector]
+    public MonsterController monsterController;
 
+    public LevelDynamicAttribute levelDynamicAttribute;
 
     public static GameController Instance { get; private set; }
 
-    public GameState CurrentGameState = GameState.Begin;
+    public GameState CurrentGameState = GameState.Start;
     public enum GameState
     {
         Begin,
@@ -29,6 +36,7 @@ public class GameController : MonoBehaviour
         End,
     }
 
+    //UI
     public Text HintText;
     public Text comboText;
     public int combo = 0;
@@ -75,7 +83,8 @@ public class GameController : MonoBehaviour
 
     void begin()
     {
-        if(!girlFriendInfoInstance)
+        print("begin");
+        if (!girlFriendInfoInstance)
         {
             girlFriendInfoInstance = Instantiate(PrefabGirlFriendInfo, new Vector3(0, 0, 0), Quaternion.identity);
             girlFriendInfoInstance.transform.SetParent(GameObject.Find("Canvas").transform, false);
@@ -94,7 +103,7 @@ public class GameController : MonoBehaviour
         initialLevel();
         compundLevel();
         createPlayer();
-        createBoss();
+        createMonster();
     }
 
 
@@ -117,18 +126,20 @@ public class GameController : MonoBehaviour
 
     }
 
-
-
     //根據資料決定關卡難易度
     void compundLevel()
     {
-
+        levelDynamicAttribute = new();
     }
 
     //創建怪物
-    void createBoss()
+    void createMonster()
     {
-        bossInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 50), Quaternion.identity);
+        if(!monsterInstance)
+        {
+            monsterInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 50), Quaternion.identity);
+            monsterController = monsterInstance.GetComponent<MonsterController>();
+        }
 
     }
 
@@ -138,6 +149,7 @@ public class GameController : MonoBehaviour
         if(!playerInstance)
         {
             playerInstance = Instantiate(PrefabPlayer, new Vector3(0, 0, 0), Quaternion.identity);
+            playerController = playerInstance.GetComponent<PlayerController>();
         }
     }
 

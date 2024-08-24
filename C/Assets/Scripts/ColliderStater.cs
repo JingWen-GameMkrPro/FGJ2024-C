@@ -11,6 +11,8 @@ public class ColliderStater : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            GameController.Instance.monsterController.TakeDamaged(10);
+            print(GameController.Instance.monsterController.currentHP);
             isColliding = true;
         }
     }

@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-        print(jumpCoda+"-----"+canResetJumpCoda);
     }
 
     void Move()
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print(collision.gameObject);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
 
@@ -66,7 +64,6 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
             GameController.Instance.combo = 0;
-            print("combo = 0");
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyHitBox"))
