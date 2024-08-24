@@ -48,7 +48,6 @@ public class MonsterController : MonoBehaviour
             Wait();
         }
 
-        print(ColliderStater.isColliding);
     }
 
     void Walk()
