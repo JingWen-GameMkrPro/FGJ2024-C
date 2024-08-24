@@ -54,12 +54,12 @@ public class CSVReader
             // 輸出字典內容以進行檢查
             foreach (var kvp in dataDictionary)
             {
-                Debug.Log("ID: " + kvp.Key + ", Values: " + string.Join(", ", kvp.Value));
+                //Debug.Log("ID: " + kvp.Key + ", Values: " + string.Join(", ", kvp.Value));
             }
         }
         catch (IOException ex)
         {
-            Debug.LogError("讀取 CSV 檔案時發生錯誤：" + ex.Message);
+            //Debug.LogError("讀取 CSV 檔案時發生錯誤：" + ex.Message);
         }
     }
 }

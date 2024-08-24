@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,6 +11,11 @@ public class GameController : MonoBehaviour
     public GameObject PrefabGirlFriendInfo;
     public GameObject PrefabPlayer;
     public GameObject PrefabBoss;
+    public GameObject PrefabDialogBox;
+
+    [HideInInspector]
+    GameObject dialogBoxInstance;
+
 
     GameObject girlFriendInfoInstance;
     GirlInfoController girlInfoController;
@@ -22,11 +28,12 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public MonsterController monsterController;
 
+    [HideInInspector]
     public LevelDynamicAttribute levelDynamicAttribute;
 
     public static GameController Instance { get; private set; }
 
-    public GameState CurrentGameState = GameState.Start;
+    public GameState CurrentGameState = GameState.Conversation;
     public enum GameState
     {
         Begin,
@@ -36,6 +43,8 @@ public class GameController : MonoBehaviour
         End,
     }
 
+    public List<string> selectionID = new List<string>();
+
     //UI
     public Text HintText;
     public Text comboText;
@@ -44,7 +53,7 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public CSVReader csvReader = new();
 
-    public int currentLevel = 111;
+    public int currentLevel = 0;
 
     void Awake()
     {
@@ -75,6 +84,7 @@ public class GameController : MonoBehaviour
                 updateCombo();
                 break;
             case GameState.Conversation:
+                createConversation();
                 break;
             case GameState.End:
                 break;
@@ -83,7 +93,6 @@ public class GameController : MonoBehaviour
 
     void begin()
     {
-        print("begin");
         if (!girlFriendInfoInstance)
         {
             girlFriendInfoInstance = Instantiate(PrefabGirlFriendInfo, new Vector3(0, 0, 0), Quaternion.identity);
@@ -120,10 +129,10 @@ public class GameController : MonoBehaviour
     //初始化關卡資料
     void initialLevel()
     {
+        currentLevel++;
         showHint("歡迎來到這一關", 2f);
         showHint("這一關非常難", 2f);
         CurrentGameState = GameState.Fight;
-
     }
 
     //根據資料決定關卡難易度
@@ -132,10 +141,28 @@ public class GameController : MonoBehaviour
         levelDynamicAttribute = new();
     }
 
+    void createConversation()
+    {
+        
+
+        if (!dialogBoxInstance)
+        {
+            currentLevel++; //Test
+            dialogBoxInstance = Instantiate(PrefabDialogBox, new Vector3(0, 0, 50), Quaternion.identity);
+            Flowchart flowchart = dialogBoxInstance.GetComponentInChildren<Flowchart>();
+
+        }
+
+        if (selectionID.Count == currentLevel)
+        {
+            CurrentGameState = GameState.End;
+        }
+    }
+
     //創建怪物
     void createMonster()
     {
-        if(!monsterInstance)
+        if (!monsterInstance)
         {
             monsterInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 50), Quaternion.identity);
             monsterController = monsterInstance.GetComponent<MonsterController>();
