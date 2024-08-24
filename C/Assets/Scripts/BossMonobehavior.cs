@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
-    public float walkSpeed = 2f;
-    public float jumpForce = 5f;
-    public float walkTime = 2f;
-    public float waitTime = 1f;
-    public float directionChangeInterval = 1f; // 新增的方向改變間隔時間
+    //魔王難易度調整點
+    public float walkSpeed = 2f; // 移動速度
+    public float jumpForce = 5f; //跳躍力道
+    public float walkTime = 2f; //移動時間
+    public float waitTime = 1f; //移動間隔等待時間
+    public float directionChangeInterval = 1f; // 方向改變間隔時間
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
@@ -20,11 +21,16 @@ public class MonsterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        
         walkTimer = walkTime;
         waitTimer = waitTime;
-        isWalking = true;
         directionChangeTimer = directionChangeInterval;
+
+        isWalking = true;
         currentDirection = Random.Range(0, 2) * 2 - 1; // 初始化方向
+
+
     }
 
     void Update()
