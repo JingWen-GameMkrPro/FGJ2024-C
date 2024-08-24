@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 421559677869662984}
   - component: {fileID: 237372432437029069}
   - component: {fileID: 8215254204459027335}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitBox
   m_TagString: EnemyHitBox
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 7224606239424142809}
   - component: {fileID: 6309227888143931028}
   - component: {fileID: 6113439959011024534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4418566f4c7fcb418c020051d21b349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  jumpForce: 5
+  walkSpeed: 3
+  jumpForce: 2
   walkTime: 2
   waitTime: 1
   directionChangeInterval: 0.2

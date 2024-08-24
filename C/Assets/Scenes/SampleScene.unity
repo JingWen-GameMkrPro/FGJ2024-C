@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6459631542463266749, guid: 9e8bd4163b0b8cd46bfe1ab12b53b267, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -845,6 +849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3225784888149161890, guid: bb42bd405a488924788dc34fd7f529e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4133218755121887736, guid: bb42bd405a488924788dc34fd7f529e2, type: 3}
       propertyPath: m_Camera
       value: 
@@ -854,7 +862,8 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3225784888149161890, guid: bb42bd405a488924788dc34fd7f529e2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb42bd405a488924788dc34fd7f529e2, type: 3}
@@ -918,6 +927,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6309643375841395610, guid: c89301a89ce06854187299561df37f45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7224606239424142809, guid: c89301a89ce06854187299561df37f45, type: 3}
       propertyPath: jumpForce
       value: 3
@@ -956,12 +969,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1419769658}
     - target: {fileID: 4126065537302220891, guid: 214937e1d3a81514389a36b067b37399, type: 3}
+      propertyPath: PrefabBoss
+      value: 
+      objectReference: {fileID: 6309643375841395610, guid: c89301a89ce06854187299561df37f45, type: 3}
+    - target: {fileID: 4126065537302220891, guid: 214937e1d3a81514389a36b067b37399, type: 3}
+      propertyPath: PrefabPlayer
+      value: 
+      objectReference: {fileID: 6459631542463266749, guid: 9e8bd4163b0b8cd46bfe1ab12b53b267, type: 3}
+    - target: {fileID: 4126065537302220891, guid: 214937e1d3a81514389a36b067b37399, type: 3}
       propertyPath: currentLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4126065537302220891, guid: 214937e1d3a81514389a36b067b37399, type: 3}
+      propertyPath: GirlFriendInfo
+      value: 
+      objectReference: {fileID: 4580756931218771655, guid: 7eae3671db4980448a7ecfd31af9e0d4, type: 3}
+    - target: {fileID: 4126065537302220891, guid: 214937e1d3a81514389a36b067b37399, type: 3}
+      propertyPath: PrefabGirlFriendInfo
+      value: 
+      objectReference: {fileID: 4580756931218771655, guid: 7eae3671db4980448a7ecfd31af9e0d4, type: 3}
     - target: {fileID: 4549675366769170804, guid: 214937e1d3a81514389a36b067b37399, type: 3}
       propertyPath: m_Name
       value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549675366769170804, guid: 214937e1d3a81514389a36b067b37399, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5517524289098520290, guid: 214937e1d3a81514389a36b067b37399, type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,7 +6,38 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+
+    public GameObject PrefabGirlFriendInfo;
+    public GameObject PrefabPlayer;
+    public GameObject PrefabBoss;
+
+    GameObject girlFriendInfoInstance;
+    GirlInfoController girlInfoController;
+    GameObject playerInstance;
+    GameObject bossInstance;
+
+
     public static GameController Instance { get; private set; }
+
+    public GameState CurrentGameState = GameState.Begin;
+    public enum GameState
+    {
+        Begin,
+        Start,
+        Fight,
+        Conversation,
+        End,
+    }
+
+    public Text HintText;
+    public Text comboText;
+    public int combo = 0;
+
+    [HideInInspector]
+    public CSVReader csvReader = new();
+
+    public int currentLevel = 111;
+
     void Awake()
     {
         // 確保只有一個實例存在
@@ -21,37 +52,53 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public Text HintText;
-    public Text comboText;
-    public int combo = 0;
-
-    [HideInInspector]
-    public CSVReader csvReader = new();
-
-    public int currentLevel = 111;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        LoadLevel(1);
-    }
-
     // Update is called once per frame
     void Update()
     {
-        updateCombo();
+        switch(CurrentGameState)
+        {
+            case GameState.Begin:
+                begin();
+                break;
+           case GameState.Start:
+                loadLevel();
+                break;
+            case GameState.Fight:
+                updateCombo();
+                break;
+            case GameState.Conversation:
+                break;
+            case GameState.End:
+                break;
+        }
     }
 
-    void LoadLevel(int level)
+    void begin()
     {
-        InitialLevel();
-        CompundLevel();
-        CreatePlayer();
-        CreateBoss();
+        if(!girlFriendInfoInstance)
+        {
+            girlFriendInfoInstance = Instantiate(PrefabGirlFriendInfo, new Vector3(0, 0, 0), Quaternion.identity);
+            girlFriendInfoInstance.transform.SetParent(GameObject.Find("Canvas").transform, false);
+            girlInfoController = girlFriendInfoInstance.GetComponent<GirlInfoController>();
+            girlFriendInfoInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(3000, 100);
+        }
+
+        if(girlInfoController.isFinish)
+        {
+            CurrentGameState = GameState.Start;
+        }
+    }
+
+    void loadLevel()
+    {
+        initialLevel();
+        compundLevel();
+        createPlayer();
+        createBoss();
     }
 
 
-    void ShowHint()
+    void showHint()
     {
 
     }
@@ -62,35 +109,42 @@ public class GameController : MonoBehaviour
     }
 
     //初始化關卡資料
-    void InitialLevel()
+    void initialLevel()
     {
-        showHint("Hello");
+        showHint("歡迎來到這一關", 2f);
+        showHint("這一關非常難", 2f);
+        CurrentGameState = GameState.Fight;
+
     }
 
-    
+
 
     //根據資料決定關卡難易度
-    void CompundLevel()
+    void compundLevel()
     {
 
     }
 
     //創建怪物
-    void CreateBoss()
+    void createBoss()
     {
+        bossInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 50), Quaternion.identity);
 
     }
 
     //創建玩家
-    void CreatePlayer()
+    void createPlayer()
     {
-
+        if(!playerInstance)
+        {
+            playerInstance = Instantiate(PrefabPlayer, new Vector3(0, 0, 0), Quaternion.identity);
+        }
     }
 
-    void showHint(string hint)
+    void showHint(string hint, float time)
     {
         HintText.text = hint;
-        StartCoroutine(HintTimerCoroutine(3f));
+        StartCoroutine(HintTimerCoroutine(time));
     }
 
     private IEnumerator HintTimerCoroutine(float duration)

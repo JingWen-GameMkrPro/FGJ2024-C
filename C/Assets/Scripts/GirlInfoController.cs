@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class GirlInfoController : MonoBehaviour
 {
-    public float scrollSpeed = 50f; // 滾動速度
+    public float scrollSpeed = 100f; // 滾動速度
     private RectTransform rectTransform;
     private float textWidth;
+
+    public bool isFinish = false;
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class GirlInfoController : MonoBehaviour
         {
             // 停止移動或執行其他邏輯
             enabled = false;
+            isFinish = true;
         }
     }
 }
