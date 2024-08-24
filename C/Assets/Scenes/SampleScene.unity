@@ -773,7 +773,7 @@ PrefabInstance:
     - target: {fileID: 4126065537302220891, guid: 214937e1d3a81514389a36b067b37399, type: 3}
       propertyPath: PrefabDialogBox
       value: 
-      objectReference: {fileID: 5139439269767304276, guid: 83fea1e19e17a65478c3a1d0f8318cc1, type: 3}
+      objectReference: {fileID: 6443587163973103596, guid: 7847bcdcafea4274480b181d26a805e1, type: 3}
     - target: {fileID: 4126065537302220891, guid: 214937e1d3a81514389a36b067b37399, type: 3}
       propertyPath: CurrentGameState
       value: 3

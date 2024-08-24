@@ -31,6 +31,9 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public LevelDynamicAttribute levelDynamicAttribute;
 
+    [HideInInspector]
+    public DialogController dialogController;
+
     public static GameController Instance { get; private set; }
 
     public GameState CurrentGameState = GameState.Conversation;
@@ -143,13 +146,10 @@ public class GameController : MonoBehaviour
 
     void createConversation()
     {
-        
-
         if (!dialogBoxInstance)
         {
             currentLevel++; //Test
             dialogBoxInstance = Instantiate(PrefabDialogBox, new Vector3(0, 0, 50), Quaternion.identity);
-            Flowchart flowchart = dialogBoxInstance.GetComponentInChildren<Flowchart>();
 
         }
 

@@ -833,6 +833,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cddfa4352b533488729753a2985f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Option1: {fileID: 5068874824154082388}
+  Option2: {fileID: 39764788654739785}
+  Option3: {fileID: 1439436979610100751}
+  Question: {fileID: 8901323056498029228}
+  QuestionTitle: {fileID: 7775688582737904544}
 --- !u!1 &1183307803892803877
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +916,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: '123213123
+
+'
 --- !u!1 &2066089821428937429
 GameObject:
   m_ObjectHideFlags: 0
