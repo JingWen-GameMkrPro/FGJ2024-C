@@ -53,11 +53,12 @@ public class GameController : MonoBehaviour
     public Text comboText;
     public int combo = 0;
 
+
+
     [HideInInspector]
-    public CSVReader csvReader = new();
+    public CSVReader CsvReader = new();
 
     public int currentLevel = 0;
-
     void Awake()
     {
         // 確保只有一個實例存在
@@ -150,6 +151,9 @@ public class GameController : MonoBehaviour
         {
             currentLevel++; //Test
             dialogBoxInstance = Instantiate(PrefabDialogBox, new Vector3(0, 0, 50), Quaternion.identity);
+
+            var id = Random.Range(1, CsvReader.ConversationDictionary.Count + 1);
+            dialogController.conversationID = 2;
 
         }
 

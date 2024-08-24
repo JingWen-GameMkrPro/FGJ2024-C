@@ -14,32 +14,33 @@ public class DialogController : MonoBehaviour
     public Text QuestionTitle;
 
 
+    public int conversationID = 0;
     private void Awake()
     {
-        GameController.Instance.dialogController = this;
 
+        GameController.Instance.dialogController = this;
 
     }
     private void Update()
     {
-        Option1.text = "牛肉麵";
-        Option2.text = "披薩";
-        Option3.text = "輕食";
-        Question.text = "寶寶，你晚餐想吃甚麼";
-        print(Question.text);
-        QuestionTitle.text = "你的女友u.3";
+
+        Option1.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][3];
+        Option2.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][4];
+        Option3.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][5];
+        Question.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][2];
+        QuestionTitle.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][1];
     }
 
     public void SaveData1()
     {
-        GameController.Instance.selectionID.Add("1");
+        GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][6]);
     }
     public void SaveData2()
     {
-        GameController.Instance.selectionID.Add("2");
+        GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][7]);
     }
     public void SaveData3()
     {
-        GameController.Instance.selectionID.Add("3");
+        GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][8]);
     }
 }
