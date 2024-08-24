@@ -8,6 +8,10 @@ public class MonsterController : MonoBehaviour
     public float walkTime = 2f; //移動時間
     public float waitTime = 1f; //移動間隔等待時間
     public float directionChangeInterval = 1f; // 方向改變間隔時間
+
+
+
+    public ColliderStater ColliderStater;    
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
@@ -43,6 +47,8 @@ public class MonsterController : MonoBehaviour
         {
             Wait();
         }
+
+        print(ColliderStater.isColliding);
     }
 
     void Walk()

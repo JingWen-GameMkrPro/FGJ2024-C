@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         //isGrounded = Physics2D.OverlapCircle(transform.position, 0.1f, groundLayer);
-        print(isGrounded);
         if (isGrounded && Input.GetKeyDown(KeyCode.W))
         {
             print("awdadw");
