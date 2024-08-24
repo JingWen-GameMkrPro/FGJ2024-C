@@ -22,7 +22,8 @@ public class GameController : MonoBehaviour
     }
 
     public Text HintText;
-
+    public Text comboText;
+    public int combo = 0;
 
     [HideInInspector]
     public CSVReader csvReader = new();
@@ -38,7 +39,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        updateCombo();
     }
 
     void LoadLevel(int level)
@@ -55,7 +56,10 @@ public class GameController : MonoBehaviour
 
     }
 
-
+    void updateCombo()
+    {
+        comboText.text = combo.ToString();
+    }
 
     //初始化關卡資料
     void InitialLevel()

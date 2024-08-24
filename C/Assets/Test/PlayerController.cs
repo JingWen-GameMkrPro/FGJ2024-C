@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
             if(canResetJumpCoda)
             {
                 jumpCoda ++;
+                GameController.Instance.combo++;
                 canResetJumpCoda = false;
             }
         }
@@ -64,11 +65,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
             isGrounded = false;
+            GameController.Instance.combo = 0;
+            print("combo = 0");
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyHitBox"))
         {
-
             canResetJumpCoda = true;
         }
     }

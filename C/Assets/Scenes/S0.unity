@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 220550495}
   - component: {fileID: 220550496}
   - component: {fileID: 220550497}
+  - component: {fileID: 220550498}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -590,7 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 122.5, y: 92.5}
+  scrollPos: {x: -5.333351, y: 143.16667}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -630,9 +631,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
-    y: 70
-    width: 111
+    x: 17.666656
+    y: 72
+    width: 113.33333
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -693,9 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: '123
-
-'
+  storyText: "\u5BF6\u5BF6\uFF0C\u4ECA\u5929\u665A\u9910\u8981\u5403\u4EC0\u9EBC\uFF1F"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -737,9 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   indentLevel: 0
-  text: '1
-
-'
+  text: "\u5065\u8EAB\u9910\n"
   description: 
   targetBlock: {fileID: 0}
   hideIfVisited: 0
@@ -752,7 +749,7 @@ MonoBehaviour:
     booleanVal: 0
 --- !u!114 &220550494
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -764,9 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 4
   indentLevel: 0
-  text: '3
-
-'
+  text: "\u9EBB\u8FA3\u706B\u934B"
   description: 
   targetBlock: {fileID: 0}
   hideIfVisited: 0
@@ -779,7 +774,7 @@ MonoBehaviour:
     booleanVal: 0
 --- !u!114 &220550495
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -791,9 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 5
   indentLevel: 0
-  text: '2
-
-'
+  text: "\u62AB\u85A9"
   description: 
   targetBlock: {fileID: 0}
   hideIfVisited: 0
@@ -806,7 +799,7 @@ MonoBehaviour:
     booleanVal: 0
 --- !u!114 &220550496
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -820,7 +813,7 @@ MonoBehaviour:
   indentLevel: 0
 --- !u!114 &220550497
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -833,6 +826,32 @@ MonoBehaviour:
   itemId: 7
   indentLevel: 0
   sayDialog: {fileID: 445809384}
+--- !u!114 &220550498
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220550485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 173.99997
+    y: 6.166641
+    width: 119.333336
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 8
+  blockName: New Block1
+  description: 
+  eventHandler: {fileID: 0}
+  commandList: []
+  suppressAllAutoSelections: 0
 --- !u!1 &305578790
 GameObject:
   m_ObjectHideFlags: 0
