@@ -263,6 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474186896}
   - component: {fileID: 474186897}
+  - component: {fileID: 474186898}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
@@ -330,6 +331,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.3}
   m_EdgeRadius: 0
+--- !u!114 &474186898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474186895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78937d231dcbcc543865ed01c2d04bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isColliding: 0
 --- !u!1 &495107287
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +657,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &832906626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +675,7 @@ MonoBehaviour:
   walkTime: 2
   waitTime: 1
   directionChangeInterval: 0.2
+  ColliderStater: {fileID: 474186898}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -875,8 +890,8 @@ GameObject:
   - component: {fileID: 1816435212}
   - component: {fileID: 1816435211}
   - component: {fileID: 1816435210}
-  m_Layer: 0
-  m_Name: Square
+  m_Layer: 6
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
