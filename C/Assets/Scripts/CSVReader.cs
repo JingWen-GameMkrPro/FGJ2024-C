@@ -7,13 +7,17 @@ public class CSVReader
 {
     public string fileConversationName = "conversation.csv";
     public string fileConversationResultName = "conversationResult.csv";
+    public string fileGirlInfoName = "girlInfo.csv";
+
     public Dictionary<string, string[]> ConversationDictionary = new Dictionary<string, string[]>();
     public Dictionary<string, string[]> ConversationResultDictionary = new Dictionary<string, string[]>();
-
+    public Dictionary<string, string[]> GirlInfoDictionary = new Dictionary<string, string[]>();
 
     public CSVReader()
     {
         LoadCSV(fileConversationName, out ConversationDictionary);
+        LoadCSV(fileGirlInfoName, out GirlInfoDictionary);
+
     }
 
     public void LoadCSV(string fileName, out Dictionary<string, string[]>  dictionary)
@@ -25,7 +29,8 @@ public class CSVReader
             try
             {
                 using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                using (StreamReader reader = new StreamReader(fileStream))
+                using (StreamReader reader = new StreamReader(fileStream, System.Text.Encoding.UTF8))
+
                 {
                     bool isFirstLine = true;
 
@@ -35,6 +40,7 @@ public class CSVReader
 
                         // 忽略第一行
                         if (isFirstLine)
+
                         {
                             isFirstLine = false;
                             continue;
@@ -46,17 +52,21 @@ public class CSVReader
                         {
                             string id = values[0];
                             dictionary[id] = values;
+
                         }
                     }
                 }
 
                 // 輸出字典內容以進行檢查
-                foreach (var kvp in ConversationDictionary)
+                foreach (var kvp in dictionary)
                 {
                     Debug.Log("ID: " + kvp.Key + ", Values: " + string.Join(", ", kvp.Value));
+
+
                 }
 
             }
+
 
             catch (IOException ex)
             {

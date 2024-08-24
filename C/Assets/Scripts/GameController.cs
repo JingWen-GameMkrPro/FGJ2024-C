@@ -1,4 +1,5 @@
 using Fungus;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -94,7 +95,8 @@ public class GameController : MonoBehaviour
                 break;
         }
     }
-
+    
+    
     void begin()
     {
         if (!girlFriendInfoInstance)
@@ -103,6 +105,28 @@ public class GameController : MonoBehaviour
             girlFriendInfoInstance.transform.SetParent(GameObject.Find("Canvas").transform, false);
             girlInfoController = girlFriendInfoInstance.GetComponent<GirlInfoController>();
             girlFriendInfoInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(3000, 100);
+            List<string> girlInfo = new List<string>();
+
+            string value = CsvReader.GirlInfoDictionary["likeFood"][UnityEngine.Random.Range(1, 6)].ToString();
+            girlInfo.Add(value);
+
+            value = CsvReader.GirlInfoDictionary["hateFood"][UnityEngine.Random.Range(1, 6)].ToString();
+            girlInfo.Add(value);
+
+            value = CsvReader.GirlInfoDictionary["likeAnimal"][UnityEngine.Random.Range(1, 6)].ToString();
+            girlInfo.Add(value);
+
+            value = CsvReader.GirlInfoDictionary["likeMovie"][UnityEngine.Random.Range(1, 6)].ToString();
+            girlInfo.Add(value);
+
+            value = CsvReader.GirlInfoDictionary["todayDo"][UnityEngine.Random.Range(1, 6)].ToString();
+            girlInfo.Add(value);
+
+            value = CsvReader.GirlInfoDictionary["today"][UnityEngine.Random.Range(1, 6)].ToString();
+            girlInfo.Add(value);
+
+
+            girlFriendInfoInstance.transform.GetComponent<Text>().text = $"女友的資訊如右，請務必記好.....................................................：女友喜歡吃{girlInfo[0]}和看{girlInfo[3]}電影；她今天去做了{girlInfo[4]}和動物，尤其喜歡{girlInfo[2]}。她討厭{girlInfo[1]}和擁擠的環境，不喜歡早起。今天是{girlInfo[5]}她對咖啡過敏，但喜歡喝果汁。她喜歡乾淨整潔的空間，也很注重生活品質，享受簡單卻有品味的生活。\r\n";
         }
 
         if(girlInfoController.isFinish)
@@ -152,7 +176,7 @@ public class GameController : MonoBehaviour
             currentLevel++; //Test
             dialogBoxInstance = Instantiate(PrefabDialogBox, new Vector3(0, 0, 50), Quaternion.identity);
 
-            var id = Random.Range(1, CsvReader.ConversationDictionary.Count + 1);
+            var id = UnityEngine.Random.Range(1, CsvReader.ConversationDictionary.Count + 1);
             dialogController.conversationID = 2;
 
         }

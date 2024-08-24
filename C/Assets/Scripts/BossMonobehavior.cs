@@ -6,7 +6,6 @@ public class MonsterController : MonoBehaviour
     public void InitialData()
     {
         this.levelDynamicAttribute = GameController.Instance.levelDynamicAttribute;
-        print(levelDynamicAttribute);
         this.walkSpeed = GameController.Instance.levelDynamicAttribute.WalkSpeed; // 移動速度
         this.jumpForce = GameController.Instance.levelDynamicAttribute.JumpForce; //跳躍力道
         this.walkTime = GameController.Instance.levelDynamicAttribute.WalkTime; //移動時間
