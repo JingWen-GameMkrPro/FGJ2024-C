@@ -2,13 +2,26 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
-    //魔王難易度調整點
-    public float walkSpeed = 2f; // 移動速度
-    public float jumpForce = 5f; //跳躍力道
-    public float walkTime = 2f; //移動時間
-    public float waitTime = 1f; //移動間隔等待時間
-    public float directionChangeInterval = 1f; // 方向改變間隔時間
+    MonsterController(LevelDynamicAttribute levelDynamicAttribute)
+    {
+        this.levelDynamicAttribute = levelDynamicAttribute;
+        //魔王難易度調整點
+        this.walkSpeed = levelDynamicAttribute.WalkSpeed; // 移動速度
+        this.jumpForce = levelDynamicAttribute.JumpForce; //跳躍力道
+        this.walkTime = levelDynamicAttribute.WalkTime; //移動時間
+        this.waitTime = levelDynamicAttribute.WaitTime; //移動間隔等待時間
+        this.directionChangeInterval = levelDynamicAttribute.DirectionChangeInterval; // 方向改變間隔時間
+    }
 
+    private LevelDynamicAttribute levelDynamicAttribute;
+
+
+    //魔王難易度調整點
+    public float walkSpeed; // 移動速度
+    public float jumpForce; //跳躍力道
+    public float walkTime; //移動時間
+    public float waitTime; //移動間隔等待時間
+    public float directionChangeInterval; // 方向改變間隔時間
 
 
     public ColliderStater ColliderStater;    
@@ -26,7 +39,6 @@ public class MonsterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        
         walkTimer = walkTime;
         waitTimer = waitTime;
         directionChangeTimer = directionChangeInterval;

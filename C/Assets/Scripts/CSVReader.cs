@@ -2,12 +2,12 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 
-public class CSVReader : MonoBehaviour
+public class CSVReader
 {
     public string fileName = "data.csv";
     private Dictionary<string, string[]> dataDictionary = new Dictionary<string, string[]>();
 
-    void Start()
+    public CSVReader()
     {
         string filePath = Path.Combine(Application.dataPath, "Excel", fileName);
 
