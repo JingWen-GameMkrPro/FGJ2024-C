@@ -184,7 +184,29 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public void ShowGF()
+    {
+        var gg = gameObject.transform.Find(("s.gf"));
+        gg.gameObject.SetActive(true);
+    }
+    
+    public void HideGF()
+    {
+        var gg = gameObject.transform.Find(("s.gf"));
+        gg.gameObject.SetActive(false);
+    }
+    
+    public void ShowComplain()
+    {
+        var gg = gameObject.transform.Find(("gf.haunt"));
+        gg.gameObject.SetActive(true);
+    }
 
+    public void HideComplain()
+    {
+        var gg = gameObject.transform.Find(("gf.haunt"));
+        gg.gameObject.SetActive(false);
+    }
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))

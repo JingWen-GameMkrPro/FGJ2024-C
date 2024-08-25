@@ -122,7 +122,7 @@ public class HealthController : MonoBehaviour
     }//99
     
     
-    void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // 确保血量不会低于0
