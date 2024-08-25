@@ -67,6 +67,6 @@ public class UIControllor : MonoBehaviour
     }
     public void OnBtnExitClick()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }

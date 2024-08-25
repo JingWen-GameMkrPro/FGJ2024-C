@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var clip in audioList)
         {
-            clip.volume = GetComponent<UIControllor>().slidVoice.value;
+            clip.volume = clip.transform.GetComponent<UIControllor>().slidVoice.value;
         }
     }
 
@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var clip in audioList)
         {
-            clip.volume = GetComponent<UIControllor>().slidVoice.value;
+            clip.volume = clip.transform.GetComponent<UIControllor>().slidVoice.value;
         }
     }
 }
