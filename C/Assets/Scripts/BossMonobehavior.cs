@@ -93,6 +93,11 @@ public class MonsterController : MonoBehaviour
 
             rb.velocity = new Vector2(walkSpeed * currentDirection, rb.velocity.y);
 
+            // 根據方向反轉角色
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * currentDirection;
+            transform.localScale = scale;
+
             if (isGrounded && Random.Range(0, 100) < 10)
             {
                 Jump();

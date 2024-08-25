@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     public GameObject PrefabGirlFriendInfo;
     public GameObject PrefabPlayer;
     public GameObject PrefabBoss;
+    public GameObject PrefabBoss1;
+    public GameObject PrefabBoss2;
+
     public GameObject PrefabDialogBox;
 
     [HideInInspector]
@@ -336,7 +339,22 @@ public class GameController : MonoBehaviour
     {
         if (!monsterInstance)
         {
-            monsterInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 50), Quaternion.identity);
+            switch(currentLevel)
+            {
+                case 1:
+                    monsterInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 50), Quaternion.identity);
+
+                    break;
+                case 2:
+                    monsterInstance = Instantiate(PrefabBoss1, new Vector3(0, 0, 50), Quaternion.identity);
+
+                    break;
+                case 3:
+                    monsterInstance = Instantiate(PrefabBoss2, new Vector3(0, 0, 50), Quaternion.identity);
+
+                    break;
+            }
+            
             monsterController = monsterInstance.GetComponent<MonsterController>();
         }
 
