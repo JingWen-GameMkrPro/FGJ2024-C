@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         HandleInput();
         Move();
         Jump();
-        print(jumpCoda+"-----"+canResetJumpCoda);
+        //print(jumpCoda+"-----"+canResetJumpCoda);
     }
 
     void HandleInput()

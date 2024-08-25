@@ -87,20 +87,48 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.Fight:
                 updateCombo();
+                checkFight();
                 break;
             case GameState.Conversation:
                 createConversation();
                 break;
             case GameState.End:
+                checkEnd();
                 break;
         }
     }
 
     public Dictionary<string, List<string>> questionsAndOptions;
     public Dictionary<string, string> girlInfo;
+    void checkFight()
+    {
+        if(monsterController.currentHP <=0)
+        {
+
+            Destroy(monsterInstance);
+            Destroy(playerInstance);
+            CurrentGameState = GameState.Conversation;
+        }
+    }
+
+    void checkEnd()
+    {
+        if(currentLevel == 3)
+        {
+            print("Game is end");
+        }
+        else
+        {
+
+
+            CurrentGameState = GameState.Start;
+            
+        }
+    }
+
     void begin()
     {
-        levelType = LevelDynamicAttribute.LevelType.Hell;
+        levelType = LevelDynamicAttribute.LevelType.Normal;
 
 
         if (!girlFriendInfoInstance)
@@ -180,7 +208,6 @@ public class GameController : MonoBehaviour
 
         if(girlInfoController.isFinish)
         {
-            //test
             CurrentGameState = GameState.Start;
         }
     }
@@ -191,14 +218,58 @@ public class GameController : MonoBehaviour
         compundLevel();
         createPlayer();
         createMonster();
+        createEffect();
     }
 
-
-    void showHint()
+    void createEffect()
     {
+        if(levelType == LevelDynamicAttribute.LevelType.Normal)
+        {
+            showHint("這一關沒有效果", 2f);
+            return;
+        }
 
+        switch(UnityEngine.Random.Range(1, 4))
+        {
+            case 1:
+                if(levelType < LevelDynamicAttribute.LevelType.Normal)
+                {
+                    showHint("這一關有「熱戀」正面效果", 2f);
+                    //Player可以放火球
+                }
+                else
+                {
+                    showHint("這一關有「毒雞湯」負面效果", 2f);
+                    //Boss可以放陷阱
+                }
+                break;
+            case 2:
+                if (levelType < LevelDynamicAttribute.LevelType.Normal)
+                {
+                    showHint("這一關有「戀愛Punch」正面效果", 2f);
+                    //Boss血量*1/2
+                }
+                else
+                {
+                    showHint("這一關沒有「冷戰」負面效果", 2f);
+                    //移動速度下降
+                }
+                break;
+            case 3:
+                if (levelType < LevelDynamicAttribute.LevelType.Normal)
+                {
+                    showHint("這一關有「撒嬌」正面效果", 2f);
+                    //跳躍高度上升
+                }
+                else
+                {
+                    showHint("這一關沒有「抱怨靈」負面效果", 2f);
+                    //跳躍高度下降
+                }
+                break;
+                
+        }
     }
-
     void updateCombo()
     {
         comboText.text = combo.ToString();
@@ -240,10 +311,18 @@ public class GameController : MonoBehaviour
             if (selectionTag[selectionTag.Count-1] == false)
             {
                 levelType++;
+                if(levelType == LevelDynamicAttribute.LevelType.Normal)
+                {
+                    levelType++;
+                }
             }
             else
             {
                 levelType--;
+                if (levelType == LevelDynamicAttribute.LevelType.Normal)
+                {
+                    levelType--;
+                }
             }
             CurrentGameState = GameState.End;
         }
