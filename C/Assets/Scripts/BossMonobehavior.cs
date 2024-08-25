@@ -6,37 +6,40 @@ public class MonsterController : MonoBehaviour
     public void InitialData()
     {
         this.levelDynamicAttribute = GameController.Instance.levelDynamicAttribute;
-        this.walkSpeed = GameController.Instance.levelDynamicAttribute.WalkSpeed; // ²¾°Ê³t«×
-        this.jumpForce = GameController.Instance.levelDynamicAttribute.JumpForce; //¸õÅD¤O¹D
-        this.walkTime = GameController.Instance.levelDynamicAttribute.WalkTime; //²¾°Ê®É¶¡
-        this.waitTime = GameController.Instance.levelDynamicAttribute.WaitTime; //²¾°Ê¶¡¹jµ¥«Ý®É¶¡
-        this.directionChangeInterval = GameController.Instance.levelDynamicAttribute.DirectionChangeInterval; // ¤è¦V§ïÅÜ¶¡¹j®É¶¡
-        this.maxBossHP = GameController.Instance.levelDynamicAttribute.MaxBossHP; //³Ì¤j¦å¶q
-        this.bossSize = GameController.Instance.levelDynamicAttribute.BossSize; //Å]¤ý¤j¤p
-        this.bossAttack = GameController.Instance.levelDynamicAttribute.BossAttack; //Å]¤ý§ðÀ»¤O
-        this.bossResistance = GameController.Instance.levelDynamicAttribute.BossResistance; //Å]¤ý©è§Ü¤O
-        this.levelType = GameController.Instance.levelDynamicAttribute.levelType;
+        print(levelDynamicAttribute);
+        this.walkSpeed = GameController.Instance.levelDynamicAttribute.WalkSpeed; // ï¿½ï¿½ï¿½Ê³tï¿½ï¿½
+        this.jumpForce = GameController.Instance.levelDynamicAttribute.JumpForce; //ï¿½ï¿½ï¿½Dï¿½Oï¿½D
+        this.walkTime = GameController.Instance.levelDynamicAttribute.WalkTime; //ï¿½ï¿½ï¿½Ê®É¶ï¿½
+        this.waitTime = GameController.Instance.levelDynamicAttribute.WaitTime; //ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½jï¿½ï¿½ï¿½Ý®É¶ï¿½
+        this.directionChangeInterval = GameController.Instance.levelDynamicAttribute.DirectionChangeInterval; // ï¿½ï¿½Vï¿½ï¿½ï¿½Ü¶ï¿½ï¿½jï¿½É¶ï¿½
+        this.maxBossHP = GameController.Instance.levelDynamicAttribute.MaxBossHP; //ï¿½Ì¤jï¿½ï¿½q
+        this.bossSize = GameController.Instance.levelDynamicAttribute.BossSize; //ï¿½]ï¿½ï¿½ï¿½jï¿½p
+        this.bossAttack = GameController.Instance.levelDynamicAttribute.BossAttack; //ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½O
+        this.bossResistance = GameController.Instance.levelDynamicAttribute.BossResistance; //ï¿½]ï¿½ï¿½ï¿½ï¿½Ü¤O
 
-        this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x*bossSize, this.gameObject.transform.localScale.y * bossSize, 1);
+
         currentHP = maxBossHP;
     }
 
     private LevelDynamicAttribute levelDynamicAttribute;
 
 
-    //Å]¤ýÃø©ö«×½Õ¾ãÂI
-    public float walkSpeed; // ²¾°Ê³t«×
-    public float jumpForce; //¸õÅD¤O¹D
-    public float walkTime; //²¾°Ê®É¶¡
-    public float waitTime; //²¾°Ê¶¡¹jµ¥«Ý®É¶¡
-    public float directionChangeInterval; // ¤è¦V§ïÅÜ¶¡¹j®É¶¡
-    public float bossSize; //Å]¤ý¤j¤p
-    public float maxBossHP; //Å]¤ý¦å¶q
-    public float bossAttack; //Å]¤ý§ðÀ»¤O
-    public float bossResistance; //Å]¤ý©è§Ü¤O
-    public LevelDynamicAttribute.LevelType levelType;
+    //ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×½Õ¾ï¿½ï¿½I
+    public float walkSpeed; // ï¿½ï¿½ï¿½Ê³tï¿½ï¿½
+    public float jumpForce; //ï¿½ï¿½ï¿½Dï¿½Oï¿½D
+    public float walkTime; //ï¿½ï¿½ï¿½Ê®É¶ï¿½
+    public float waitTime; //ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½jï¿½ï¿½ï¿½Ý®É¶ï¿½
+    public float directionChangeInterval; // ï¿½ï¿½Vï¿½ï¿½ï¿½Ü¶ï¿½ï¿½jï¿½É¶ï¿½
 
-    public float currentHP; //¥Ø«e¦å¶q
+
+    public float bossSize; //ï¿½]ï¿½ï¿½ï¿½jï¿½p
+    public float maxBossHP; //ï¿½]ï¿½ï¿½ï¿½ï¿½q
+    public float bossAttack; //ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½O
+    public float bossResistance; //ï¿½]ï¿½ï¿½ï¿½ï¿½Ü¤O
+
+
+
+    public float currentHP; //ï¿½Ø«eï¿½ï¿½q
     public ColliderStater ColliderStater;    
     public LayerMask groundLayer;
     private Rigidbody2D rb;
@@ -53,7 +56,7 @@ public class MonsterController : MonoBehaviour
 
         InitialData();
 
-        currentDirection = Random.Range(0, 2) * 2 - 1; // ªì©l¤Æ¤è¦V
+        currentDirection = Random.Range(0, 2) * 2 - 1; // ï¿½ï¿½lï¿½Æ¤ï¿½V
     }
 
     void Update()
@@ -84,8 +87,8 @@ public class MonsterController : MonoBehaviour
         {
             if (directionChangeTimer <= 0)
             {
-                currentDirection = Random.Range(0, 2) * 2 - 1; // §ïÅÜ¤è¦V
-                directionChangeTimer = directionChangeInterval; // ­«¸m¤è¦V§ïÅÜ­p®É¾¹
+                currentDirection = Random.Range(0, 2) * 2 - 1; // ï¿½ï¿½ï¿½Ü¤ï¿½V
+                directionChangeTimer = directionChangeInterval; // ï¿½ï¿½ï¿½mï¿½ï¿½Vï¿½ï¿½ï¿½Ü­pï¿½É¾ï¿½
             }
 
             rb.velocity = new Vector2(walkSpeed * currentDirection, rb.velocity.y);

@@ -9,6 +9,17 @@ public class ColliderStater : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.LogWarning(collision.gameObject.name);
+
+        if (collision.gameObject.name == "Player 1")
+        {
+            HealthController h = collision.gameObject.GetComponent<HealthController>();
+            if (h != null)
+            {
+                h.Hit();
+            }
+        }
+        
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             GameController.Instance.monsterController.TakeDamaged(10);
