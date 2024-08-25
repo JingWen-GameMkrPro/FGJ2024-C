@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour
     public Dictionary<string, string> girlInfo;
     void begin()
     {
-        levelType = LevelDynamicAttribute.LevelType.Normal;
+        levelType = LevelDynamicAttribute.LevelType.Hell;
 
 
         if (!girlFriendInfoInstance)
@@ -226,7 +226,7 @@ public class GameController : MonoBehaviour
     {
         if (!dialogBoxInstance)
         {
-            currentLevel++; //Test
+            //currentLevel++; 
             dialogBoxInstance = Instantiate(PrefabDialogBox, new Vector3(0, 0, 50), Quaternion.identity);
 
             //隨機產生問題

@@ -15,8 +15,9 @@ public class MonsterController : MonoBehaviour
         this.bossSize = GameController.Instance.levelDynamicAttribute.BossSize; //魔王大小
         this.bossAttack = GameController.Instance.levelDynamicAttribute.BossAttack; //魔王攻擊力
         this.bossResistance = GameController.Instance.levelDynamicAttribute.BossResistance; //魔王抵抗力
-        this.levelType = GameController.Instance.levelType;
+        this.levelType = GameController.Instance.levelDynamicAttribute.levelType;
 
+        this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x*bossSize, this.gameObject.transform.localScale.y * bossSize, 1);
         currentHP = maxBossHP;
     }
 
@@ -29,13 +30,10 @@ public class MonsterController : MonoBehaviour
     public float walkTime; //移動時間
     public float waitTime; //移動間隔等待時間
     public float directionChangeInterval; // 方向改變間隔時間
-
-
     public float bossSize; //魔王大小
     public float maxBossHP; //魔王血量
     public float bossAttack; //魔王攻擊力
     public float bossResistance; //魔王抵抗力
-
     public LevelDynamicAttribute.LevelType levelType;
 
     public float currentHP; //目前血量
