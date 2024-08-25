@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject PrefabDialogBox;
 
     [HideInInspector]
-    GameObject dialogBoxInstance;
+    public GameObject dialogBoxInstance;
 
 
     GameObject girlFriendInfoInstance;
@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
         Fight,
         Conversation,
         End,
+        GameEnd,
     }
 
     public List<bool> selectionTag = new List<bool>();
@@ -107,23 +108,21 @@ public class GameController : MonoBehaviour
 
             Destroy(monsterInstance);
             Destroy(playerInstance);
-            CurrentGameState = GameState.Conversation;
+
+            if(currentLevel == 3)
+            {
+                CurrentGameState = GameState.GameEnd;
+            }
+            else
+            {
+                CurrentGameState = GameState.Conversation;
+            }
         }
     }
 
     void checkEnd()
     {
-        if(currentLevel == 3)
-        {
-            print("Game is end");
-        }
-        else
-        {
-
-
-            CurrentGameState = GameState.Start;
-            
-        }
+        CurrentGameState = GameState.Start;
     }
 
     void begin()
@@ -214,6 +213,8 @@ public class GameController : MonoBehaviour
 
     void loadLevel()
     {
+        
+
         initialLevel();
         compundLevel();
         createPlayer();
@@ -324,6 +325,8 @@ public class GameController : MonoBehaviour
                     levelType--;
                 }
             }
+            Destroy(dialogBoxInstance);
+
             CurrentGameState = GameState.End;
         }
     }

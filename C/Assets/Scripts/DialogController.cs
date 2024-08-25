@@ -98,6 +98,7 @@ public class DialogController : MonoBehaviour
         {
             GameController.Instance.selectionTag.Add(true);
         }
+        Destroy(gameObject);
     }
     public void SaveData2()
     {
@@ -109,6 +110,7 @@ public class DialogController : MonoBehaviour
         {
             GameController.Instance.selectionTag.Add(true);
         }
+        Destroy(gameObject);
     }
     public void SaveData3()
     {
@@ -120,5 +122,7 @@ public class DialogController : MonoBehaviour
         {
             GameController.Instance.selectionTag.Add(true);
         }
+
+        Destroy(gameObject);
     }
 }
