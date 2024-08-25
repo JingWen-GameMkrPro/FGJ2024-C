@@ -12,6 +12,7 @@ public class ColliderStater : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             GameController.Instance.monsterController.TakeDamaged(10);
+            transform.parent.Find("Effect").gameObject.SetActive(true);
             isColliding = true;
         }
     }
@@ -20,6 +21,8 @@ public class ColliderStater : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            transform.parent.Find("Effect").gameObject.SetActive(false);
+
             isColliding = false;
         }
     }

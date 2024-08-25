@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public GameObject PrefabBoss;
     public GameObject PrefabBoss1;
     public GameObject PrefabBoss2;
-
+    public Slider BossSlider;
     public GameObject PrefabDialogBox;
 
     [HideInInspector]
@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
                 loadLevel();
                 break;
             case GameState.Fight:
-                updateCombo();
+                updateUI();
                 checkFight();
                 break;
             case GameState.Conversation:
@@ -276,9 +276,12 @@ public class GameController : MonoBehaviour
                 
         }
     }
-    void updateCombo()
+    void updateUI()
     {
         comboText.text = combo.ToString();
+
+        BossSlider.value = monsterController.currentHP;
+        BossSlider.maxValue = monsterController.maxBossHP;
     }
 
     //初始化關卡資料
@@ -304,7 +307,7 @@ public class GameController : MonoBehaviour
         if (!dialogBoxInstance)
         {
             //currentLevel++; 
-            dialogBoxInstance = Instantiate(PrefabDialogBox, new Vector3(0, 0, 50), Quaternion.identity);
+            dialogBoxInstance = Instantiate(PrefabDialogBox, new Vector3(0, 0, 0), Quaternion.identity);
 
             //隨機產生問題
             var id = UnityEngine.Random.Range(1, CsvReader.ConversationDictionary.Count + 1);
@@ -344,15 +347,15 @@ public class GameController : MonoBehaviour
             switch(currentLevel)
             {
                 case 1:
-                    monsterInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 50), Quaternion.identity);
+                    monsterInstance = Instantiate(PrefabBoss, new Vector3(0, 0, 0), Quaternion.identity);
 
                     break;
                 case 2:
-                    monsterInstance = Instantiate(PrefabBoss1, new Vector3(0, 0, 50), Quaternion.identity);
+                    monsterInstance = Instantiate(PrefabBoss1, new Vector3(0, 0, 0), Quaternion.identity);
 
                     break;
                 case 3:
-                    monsterInstance = Instantiate(PrefabBoss2, new Vector3(0, 0, 50), Quaternion.identity);
+                    monsterInstance = Instantiate(PrefabBoss2, new Vector3(0, 0, 0), Quaternion.identity);
 
                     break;
             }
