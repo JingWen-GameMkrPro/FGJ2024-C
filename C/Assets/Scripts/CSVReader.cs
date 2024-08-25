@@ -17,7 +17,6 @@ public class CSVReader
     {
         LoadCSV(fileConversationName, out ConversationDictionary);
         LoadCSV(fileGirlInfoName, out GirlInfoDictionary);
-
     }
 
     public void LoadCSV(string fileName, out Dictionary<string, string[]>  dictionary)

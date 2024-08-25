@@ -1,4 +1,5 @@
 using Fungus;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class DialogController : MonoBehaviour
     public Text Option3;
     public Text Question;
     public Text QuestionTitle;
-
+    string questionKey = "";
 
     public int conversationID = 0;
     private void Awake()
@@ -23,24 +24,104 @@ public class DialogController : MonoBehaviour
     }
     private void Update()
     {
+        switch(GameController.Instance.currentLevel)
+        {
+            case 1:
+                int count = 1;
+                foreach (var question in GameController.Instance.questionsAndOptions)
+                {
+                    if(count != GameController.Instance.currentLevel)
+                    {
+                        count++;
+                        continue;
+                    }
+                    Option1.text = question.Value[0];
+                    Option2.text = question.Value[1];
+                    Option3.text = question.Value[2];
+                    Question.text = GameController.Instance.CsvReader.ConversationDictionary[question.Key][3];
+                    QuestionTitle.text = GameController.Instance.CsvReader.ConversationDictionary[question.Key][2];
+                    questionKey = question.Key;
 
-        Option1.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][3];
-        Option2.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][4];
-        Option3.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][5];
-        Question.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][2];
-        QuestionTitle.text = GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][1];
+                    count++;
+                }
+                break;
+            case 2:
+                count = 1;
+                foreach (var question in GameController.Instance.questionsAndOptions)
+                {
+                    if (count != GameController.Instance.currentLevel)
+                    {
+                        count++;
+                        continue;
+                    }
+                    Option1.text = question.Value[0];
+                    Option2.text = question.Value[1];
+                    Option3.text = question.Value[2];
+                    Question.text = GameController.Instance.CsvReader.ConversationDictionary[question.Key][3];
+                    QuestionTitle.text = GameController.Instance.CsvReader.ConversationDictionary[question.Key][2];
+                    questionKey = question.Key;
+
+                    count++;
+                }
+                break;
+            case 3:
+                count = 1;
+                foreach (var question in GameController.Instance.questionsAndOptions)
+                {
+                    if (count != GameController.Instance.currentLevel)
+                    {
+                        count++;
+                        continue;
+                    }
+                    Option1.text = question.Value[0];
+                    Option2.text = question.Value[1];
+                    Option3.text = question.Value[2];
+                    Question.text = GameController.Instance.CsvReader.ConversationDictionary[question.Key][3];
+                    QuestionTitle.text = GameController.Instance.CsvReader.ConversationDictionary[question.Key][2];
+                    questionKey = question.Key;
+
+                    count++;
+                }
+                break;
+        }
+
+
     }
 
     public void SaveData1()
     {
-        GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][6]);
+        if (Option1.text != GameController.Instance.girlInfo[questionKey])
+        {
+            GameController.Instance.selectionTag.Add(false);
+        }
+        else
+        {
+            GameController.Instance.selectionTag.Add(true);
+        }
+        //GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][6]);
     }
     public void SaveData2()
     {
-        GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][7]);
+        if (Option2.text != GameController.Instance.girlInfo[questionKey])
+        {
+            GameController.Instance.selectionTag.Add(false);
+        }
+        else
+        {
+            GameController.Instance.selectionTag.Add(true);
+        }
+        //GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][7]);
     }
     public void SaveData3()
     {
-        GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][8]);
+        if (Option3.text != GameController.Instance.girlInfo[questionKey])
+        {
+            GameController.Instance.selectionTag.Add(false);
+        }
+        else
+        {
+            GameController.Instance.selectionTag.Add(true);
+        }
+        //GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][8]);
     }
 }
