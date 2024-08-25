@@ -44,3 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4364dd1954c47cf44a4e20684794ac04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrefabGirlFriendInfo: {fileID: 4580756931218771655, guid: 7eae3671db4980448a7ecfd31af9e0d4, type: 3}
+  PrefabPlayer: {fileID: 3115495341707582398, guid: 1401da80919191f48b4d5eb489292806, type: 3}
+  PrefabBoss: {fileID: 6309643375841395610, guid: c89301a89ce06854187299561df37f45, type: 3}
+  PrefabBoss1: {fileID: 6309643375841395610, guid: 1e8b35e65d3209d42b33429a7558b1d7, type: 3}
+  PrefabBoss2: {fileID: 6309643375841395610, guid: e319907ea91ddda4f9a0b042eacacf79, type: 3}
+  PrefabDialogBox: {fileID: 6443587163973103596, guid: 7847bcdcafea4274480b181d26a805e1, type: 3}
+  dialogBoxInstance: {fileID: 0}
+  playerInstance: {fileID: 0}
+  playerController: {fileID: 0}
+  monsterInstance: {fileID: 0}
+  monsterController: {fileID: 0}
+  levelDynamicAttribute: {fileID: 0}
+  dialogController: {fileID: 0}
+  CurrentGameState: 0
+  selectionTag: 
+  HintText: {fileID: 0}
+  comboText: {fileID: 0}
+  combo: 0
+  currentLevel: 0
+  levelType: 0
