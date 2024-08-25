@@ -2797,6 +2797,9 @@ PrefabInstance:
     - {fileID: 2819789556728939214, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
     - {fileID: 4618773401850756284, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
     - {fileID: 3758982247593487664, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
+    - {fileID: 4180169956581533993, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
+    - {fileID: 3212059715922381632, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
+    - {fileID: 5956342217055776652, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3737673545178041196, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
       insertIndex: 1
@@ -2932,17 +2935,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1587252102 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3637816240598269407, guid: 120b5ee11323e5c4eb873547b4940286, type: 3}
-  m_PrefabInstance: {fileID: 1503846084}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1602322439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3415,7 +3407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1587252102}
+  selectedFlowchart: {fileID: 0}
 --- !u!4 &1699858445
 Transform:
   m_ObjectHideFlags: 1
