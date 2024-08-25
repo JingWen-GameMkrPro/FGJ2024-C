@@ -1,10 +1,10 @@
-# Default ignored files
+﻿# Default ignored files
 /shelf/
 /workspace.xml
 # Rider ignored files
 /modules.xml
-/.idea.C.iml
 /contentModel.xml
+/.idea.C.iml
 /projectSettingsUpdater.xml
 # Editor-based HTTP Client requests
 /httpRequests/
