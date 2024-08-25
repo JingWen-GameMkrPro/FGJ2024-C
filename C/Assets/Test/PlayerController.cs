@@ -184,6 +184,22 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    
+    public void ShowFB()
+    {
+        var gg = gameObject.transform.Find(("火球"));
+        gg.gameObject.SetActive(true);
+    }
+    
+    public void HideFB()
+    {
+        var gg = gameObject.transform.Find(("火球"));
+        gg.gameObject.SetActive(false);
+    }
+    
+    
+    
     public void ShowGF()
     {
         var gg = gameObject.transform.Find(("s.gf"));
