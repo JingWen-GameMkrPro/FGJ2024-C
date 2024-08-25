@@ -227,13 +227,13 @@ public class GameController : MonoBehaviour
 
     void createEffect()
     {
-        if(levelType == LevelDynamicAttribute.LevelType.Normal)
+        if(levelType == LevelDynamicAttribute.LevelType.Hell)
         {
             showHint("這一關沒有效果", 2f);
             return;
         }
 
-        switch(UnityEngine.Random.Range(1, 4))
+        switch(UnityEngine.Random.Range(1, 2))
         {
             case 1:
                 if(levelType < LevelDynamicAttribute.LevelType.Normal)
@@ -245,12 +245,14 @@ public class GameController : MonoBehaviour
                 {
                     showHint("這一關有「毒雞湯」負面效果", 2f);
                     //Boss可以放陷阱
+                    monsterController.CanPoison = true;
                 }
                 break;
             case 2:
                 if (levelType < LevelDynamicAttribute.LevelType.Normal)
                 {
                     showHint("這一關有「戀愛Punch」正面效果", 2f);
+                    
                     //Boss血量*1/2
                 }
                 else

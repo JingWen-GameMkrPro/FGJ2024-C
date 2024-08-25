@@ -291,6 +291,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  CanPoison: 0
+  PrefabPoison: {fileID: 3459348138838584254, guid: bdc778c82d818b24387793b297c2706d, type: 3}
 --- !u!50 &6309227888143931028
 Rigidbody2D:
   serializedVersion: 4

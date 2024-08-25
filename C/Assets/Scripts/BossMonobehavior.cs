@@ -50,6 +50,10 @@ public class MonsterController : MonoBehaviour
     private bool isGrounded;
     private bool isWalking = false;
 
+
+    public bool CanPoison = false;
+    public GameObject PrefabPoison;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,6 +72,14 @@ public class MonsterController : MonoBehaviour
         else
         {
             Wait();
+            if(CanPoison)
+            {
+                if(Random.Range(1, 1000) <= 1)
+                {
+                    var PoisonObject = Instantiate(PrefabPoison, new Vector3(GameController.Instance.monsterController.transform.position.x, -8.83f, 0), Quaternion.identity);
+                    //PoisonObject.transform.position = GameController.Instance.gameObject.transform.position;
+                }
+            }
         }
 
     }
