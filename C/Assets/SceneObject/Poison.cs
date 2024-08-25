@@ -11,8 +11,9 @@ public class Poison : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameController.Instance.monsterController.TakeDamaged(10);
+            GameController.Instance.playerController.transform.GetComponent<HealthController>().TakeDamage(5);
             isColliding = true;
+            Destroy(gameObject);
         }
     }
 
