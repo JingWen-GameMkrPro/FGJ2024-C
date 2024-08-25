@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public GameObject PrefabBoss2;
     public Slider BossSlider;
     public GameObject PrefabDialogBox;
+    public SpriteRenderer spriteRenderer;
 
     [HideInInspector]
     public GameObject dialogBoxInstance;
@@ -227,49 +228,59 @@ public class GameController : MonoBehaviour
 
     void createEffect()
     {
-        if(levelType == LevelDynamicAttribute.LevelType.Hell)
+        if(levelType == LevelDynamicAttribute.LevelType.Normal)
         {
-            showHint("這一關沒有效果", 2f);
+            showHint("跳躍到怪物頭頂造成傷害", 2f);
             return;
         }
-
-        switch(UnityEngine.Random.Range(1, 2))
+        switch(UnityEngine.Random.Range(1, 4))
         {
             case 1:
                 if(levelType < LevelDynamicAttribute.LevelType.Normal)
                 {
                     showHint("這一關有「熱戀」正面效果", 2f);
                     //Player可以放火球
+                    StartCoroutine(ChangeColorOverTime(2f, Color.red));
+
                 }
                 else
                 {
                     showHint("這一關有「毒雞湯」負面效果", 2f);
                     //Boss可以放陷阱
                     monsterController.CanPoison = true;
+                    StartCoroutine(ChangeColorOverTime(2f, new Color(0.5f, 0f, 0.5f)));
+
                 }
                 break;
             case 2:
                 if (levelType < LevelDynamicAttribute.LevelType.Normal)
                 {
                     showHint("這一關有「戀愛Punch」正面效果", 2f);
-                    
+                    StartCoroutine(ChangeColorOverTime(2f, Color.yellow));
+
                     //Boss血量*1/2
                 }
                 else
                 {
-                    showHint("這一關沒有「冷戰」負面效果", 2f);
+                    showHint("這一關有「冷戰」負面效果", 2f);
                     //移動速度下降
+                    // 開始協程
+                    StartCoroutine(ChangeColorOverTime(2f, Color.blue));
                 }
                 break;
             case 3:
                 if (levelType < LevelDynamicAttribute.LevelType.Normal)
                 {
                     showHint("這一關有「撒嬌」正面效果", 2f);
+                    StartCoroutine(ChangeColorOverTime(2f, Color.magenta));
+                    playerController.ShowGF();
                     //跳躍高度上升
                 }
                 else
                 {
-                    showHint("這一關沒有「抱怨靈」負面效果", 2f);
+                    showHint("這一關有「抱怨靈」負面效果", 2f);
+                    playerController.ShowComplain();
+                    StartCoroutine(ChangeColorOverTime(2f, Color.gray));
                     //跳躍高度下降
                 }
                 break;
@@ -301,7 +312,34 @@ public class GameController : MonoBehaviour
         levelDynamicAttribute.SetDataByLevelType();
         
     }
+    IEnumerator ChangeColorOverTime(float duration, Color color)
+    {
+        float halfDuration = duration / 2f;
+        float timer = 0f;
 
+        // 從白色到藍色
+        while (timer < halfDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / halfDuration;
+            spriteRenderer.color = Color.Lerp(Color.white, color, t);
+            yield return null;
+        }
+
+        timer = 0f;
+
+        // 從藍色到白色
+        while (timer < halfDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / halfDuration;
+            spriteRenderer.color = Color.Lerp(color, Color.white, t);
+            yield return null;
+        }
+
+        // 確保最終顏色是白色
+        spriteRenderer.color = Color.white;
+    }
     void createConversation()
     {
         if (!dialogBoxInstance)
@@ -377,6 +415,7 @@ public class GameController : MonoBehaviour
 
     void showHint(string hint, float time)
     {
+        HintText.gameObject.SetActive(true);
         HintText.text = hint;
         StartCoroutine(HintTimerCoroutine(time));
     }
@@ -392,6 +431,8 @@ public class GameController : MonoBehaviour
         }
 
         HintText.text = "";
+        HintText.gameObject.SetActive(false);
+
     }
 
 
