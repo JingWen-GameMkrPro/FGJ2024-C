@@ -98,7 +98,6 @@ public class DialogController : MonoBehaviour
         {
             GameController.Instance.selectionTag.Add(true);
         }
-        //GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][6]);
     }
     public void SaveData2()
     {
@@ -110,7 +109,6 @@ public class DialogController : MonoBehaviour
         {
             GameController.Instance.selectionTag.Add(true);
         }
-        //GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][7]);
     }
     public void SaveData3()
     {
@@ -122,6 +120,5 @@ public class DialogController : MonoBehaviour
         {
             GameController.Instance.selectionTag.Add(true);
         }
-        //GameController.Instance.selectionID.Add(GameController.Instance.CsvReader.ConversationDictionary[conversationID.ToString()][8]);
     }
 }

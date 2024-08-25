@@ -100,6 +100,9 @@ public class GameController : MonoBehaviour
     public Dictionary<string, string> girlInfo;
     void begin()
     {
+        levelType = LevelDynamicAttribute.LevelType.Normal;
+
+
         if (!girlFriendInfoInstance)
         {
             girlFriendInfoInstance = Instantiate(PrefabGirlFriendInfo, new Vector3(0, 0, 0), Quaternion.identity);
@@ -177,7 +180,8 @@ public class GameController : MonoBehaviour
 
         if(girlInfoController.isFinish)
         {
-            CurrentGameState = GameState.Conversation;
+            //test
+            CurrentGameState = GameState.Start;
         }
     }
 
@@ -209,10 +213,13 @@ public class GameController : MonoBehaviour
         CurrentGameState = GameState.Fight;
     }
 
+    public LevelDynamicAttribute.LevelType levelType;
     //根據資料決定關卡難易度
     void compundLevel()
     {
         levelDynamicAttribute = new();
+        levelDynamicAttribute.SetDataByLevelType();
+        
     }
 
     void createConversation()
@@ -230,6 +237,14 @@ public class GameController : MonoBehaviour
 
         if (selectionTag.Count == currentLevel)
         {
+            if (selectionTag[selectionTag.Count-1] == false)
+            {
+                levelType++;
+            }
+            else
+            {
+                levelType--;
+            }
             CurrentGameState = GameState.End;
         }
     }

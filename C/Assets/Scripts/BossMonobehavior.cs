@@ -15,7 +15,7 @@ public class MonsterController : MonoBehaviour
         this.bossSize = GameController.Instance.levelDynamicAttribute.BossSize; //Å]¤ý¤j¤p
         this.bossAttack = GameController.Instance.levelDynamicAttribute.BossAttack; //Å]¤ý§ðÀ»¤O
         this.bossResistance = GameController.Instance.levelDynamicAttribute.BossResistance; //Å]¤ý©è§Ü¤O
-
+        this.levelType = GameController.Instance.levelType;
 
         currentHP = maxBossHP;
     }
@@ -36,7 +36,7 @@ public class MonsterController : MonoBehaviour
     public float bossAttack; //Å]¤ý§ðÀ»¤O
     public float bossResistance; //Å]¤ý©è§Ü¤O
 
-
+    public LevelDynamicAttribute.LevelType levelType;
 
     public float currentHP; //¥Ø«e¦å¶q
     public ColliderStater ColliderStater;    
