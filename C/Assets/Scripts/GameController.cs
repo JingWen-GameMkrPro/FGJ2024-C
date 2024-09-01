@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
 
@@ -61,8 +61,7 @@ public class GameController : MonoBehaviour
 
 
 
-    [HideInInspector]
-    public CSVReader CsvReader = new();
+    public CSVReader CsvReader;
 
     public int currentLevel = 0;
     void Awake()
@@ -99,6 +98,12 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.End:
                 checkEnd();
+                break;
+            case GameState.GameEnd:
+                SceneManager.LoadScene("MainMenu");
+                Application.Quit();
+
+
                 break;
         }
     }

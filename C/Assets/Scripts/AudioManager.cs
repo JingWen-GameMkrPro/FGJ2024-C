@@ -6,12 +6,17 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public List<AudioSource> audioList = new List<AudioSource>();
+
     // Start is called before the first frame update
     void Start()
     {
         foreach (var clip in audioList)
         {
-            clip.volume = clip.transform.GetComponent<UIControllor>().slidVoice.value;
+            if (GameObject.Find("EventSystem").transform != null)
+            {
+                //clip.volume = GameObject.Find("EventSystem").transform.GetComponent<UIControllor>().slidVoice.value;
+
+            }
         }
     }
 
@@ -20,7 +25,11 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var clip in audioList)
         {
-            clip.volume = clip.transform.GetComponent<UIControllor>().slidVoice.value;
+            if(GameObject.Find("EventSystem").transform !=null)
+            {
+                //clip.volume = GameObject.Find("EventSystem").transform.GetComponent<UIControllor>().slidVoice.value;
+            }
+
         }
     }
 }
